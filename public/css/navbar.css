@@ -96,6 +96,7 @@
     margin: -10px;
     background: transparent;
     border: none;
+    position: relative;
 }
 
 .navbar-burger:hover {
@@ -120,16 +121,17 @@
     height: 100vh;
     background-color: rgba(29, 29, 29, 0.98);
     padding: 6rem 2rem 2rem;
-    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: all 0.4s ease;
     z-index: 1000;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    display: none;
+    display: block;
+    transform: translateX(100%);
 }
 
 .navbar-mobile.active {
     right: 0;
-    display: block;
+    transform: translateX(0);
 }
 
 .navbar-mobile-links {
@@ -248,6 +250,9 @@
 
     body.menu-open {
         overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
     }
 }
 
