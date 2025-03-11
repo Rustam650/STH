@@ -25,6 +25,8 @@ instance:
 
 build:
   - composer install --no-dev --optimize-autoloader
+  - npm ci
+  - npm run build
   - mkdir -p storage/framework/{sessions,views,cache}
   - mkdir -p storage/logs
   - chmod -R 775 storage bootstrap/cache
