@@ -18,3 +18,9 @@ yarn-error.log
 /.idea
 /.vscode
 .DS_Store
+*.log
+.htaccess
+public/.htaccess
+Procfile
+start.sh
+tinker_admin_login.php
