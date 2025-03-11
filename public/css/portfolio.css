@@ -183,7 +183,7 @@ html, body {
     width: 100%;
     max-width: 800px;
     max-height: 90vh;
-    background-color: #1D1D1D;
+    background-color: transparent;
     border-radius: 16px;
     overflow: hidden;
     position: relative;
@@ -355,10 +355,11 @@ html, body {
     display: flex;
     gap: 0.5rem;
     overflow-x: auto;
-    padding-bottom: 0.5rem;
-    padding-top: 1rem;
+    padding: 0.5rem;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    background: transparent;
+    margin-top: 1rem;
 }
 
 /* Скрываем стандартную полосу прокрутки в Chrome */
@@ -525,7 +526,7 @@ html, body {
     .modal-thumbnails {
         position: sticky;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.8);
+        background: transparent;
         padding: 0.75rem;
         margin: 0;
         width: 100%;

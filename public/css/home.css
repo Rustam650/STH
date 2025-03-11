@@ -118,7 +118,7 @@ body {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 5rem 2rem 2rem;
+    padding: 7rem 2rem 2rem;
     color: #fff;
 }
 
@@ -382,12 +382,13 @@ body {
     }
 
     .section-content {
-        padding: 2rem 1rem;
+        padding: 5rem 1rem 2rem;
     }
 
     .section-title {
         font-size: 2rem;
         margin-bottom: 1rem;
+        padding-top: 2rem;
     }
 
     .section-description {
@@ -445,15 +446,18 @@ body {
 
 @media (max-width: 480px) {
     .section-content {
-        padding: 1rem;
+        padding: 4.5rem 1rem 1.5rem;
     }
 
     .section-title {
         font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+        padding-top: 1.5rem;
     }
 
     .section-description {
         font-size: 0.95rem;
+        margin-bottom: 1.25rem;
     }
 
     .feature-card {

@@ -31,9 +31,15 @@
     transform: scale(1.05);
 }
 
-.navbar-logo img {
+.navbar-logo img.logo-color {
+    display: block;
     height: 45px;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.navbar-logo img.logo-white {
+    display: none;
+    height: 45px;
 }
 
 .navbar-logo-text {
@@ -232,6 +238,14 @@
 
 .navbar.scrolled .navbar-burger span {
     background-color: #e0e0e0;
+}
+
+.navbar.scrolled .navbar-logo img.logo-color {
+    display: none;
+}
+
+.navbar.scrolled .navbar-logo img.logo-white {
+    display: block;
 }
 
 /* Адаптивность */
