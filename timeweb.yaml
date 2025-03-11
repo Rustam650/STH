@@ -3,13 +3,18 @@ env: php
 version: "1.0"
 domains:
   - stone-hill.ru
+  - www.stone-hill.ru
 ssl:
   enabled: true
   type: lets_encrypt
+  domains:
+    - stone-hill.ru
+    - www.stone-hill.ru
 redirects:
   - source: www.stone-hill.ru
     target: stone-hill.ru
     type: permanent
+    ssl: true
 instance:
   region: ru-1
   cpu: 1
