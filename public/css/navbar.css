@@ -102,7 +102,6 @@
     margin: -10px;
     background: transparent;
     border: none;
-    position: relative;
 }
 
 .navbar-burger:hover {
@@ -128,16 +127,13 @@
     background-color: rgba(29, 29, 29, 0.98);
     padding: 6rem 2rem 2rem;
     transition: all 0.4s ease;
-    z-index: 1000;
+    z-index: 999;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    display: block;
-    transform: translateX(100%);
 }
 
 .navbar-mobile.active {
     right: 0;
-    transform: translateX(0);
 }
 
 .navbar-mobile-links {
@@ -154,24 +150,6 @@
     transition: all 0.3s ease;
     padding: 0.5rem 0;
     position: relative;
-    display: block;
-    overflow: hidden;
-}
-
-.navbar-mobile-link::before {
-    content: '';
-    position: absolute;
-    left: -100%;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #FFC145;
-    transition: left 0.3s ease;
-}
-
-.navbar-mobile-link:hover::before,
-.navbar-mobile-link.active::before {
-    left: 0;
 }
 
 .navbar-mobile-link:hover,
@@ -188,12 +166,10 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    z-index: 999;
+    z-index: 998;
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s ease;
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
 }
 
 .navbar-overlay.active {
@@ -203,8 +179,7 @@
 
 /* Анимация бургер-меню */
 .navbar-burger.active span:nth-child(1) {
-    transform: translateY(8.5px) rotate(45deg);
-    background-color: #FFC145;
+    transform: translateY(8px) rotate(45deg);
 }
 
 .navbar-burger.active span:nth-child(2) {
@@ -212,8 +187,7 @@
 }
 
 .navbar-burger.active span:nth-child(3) {
-    transform: translateY(-8.5px) rotate(-45deg);
-    background-color: #FFC145;
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Эффект скролла для навбара */
@@ -258,15 +232,8 @@
         display: flex;
     }
 
-    .navbar-mobile {
-        display: block;
-    }
-
     body.menu-open {
         overflow: hidden;
-        position: fixed;
-        width: 100%;
-        height: 100%;
     }
 }
 
