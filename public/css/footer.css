@@ -1,0 +1,156 @@
+/* Основные стили футера */
+.footer {
+    /* background-color: #2D2D2D; */
+    color: #FFFFFF;
+    padding: 3rem 0;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    background-color: #1D1D1D;
+}
+
+.footer-container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* Логотип и описание */
+.footer-logo {
+    height: 80px;
+    margin-bottom: 0.5rem;
+}
+
+.footer-description {
+    color: #AAAAAA;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Социальные сети */
+.footer-social {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.footer-social-link {
+    color: #FFC145;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.footer-social-link:hover {
+    color: #FFFFFF;
+    transform: translateY(-3px);
+}
+
+.footer-social-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+}
+
+.footer-social-text {
+    font-size: 0.9rem;
+}
+
+/* Навигация */
+.footer-heading {
+    color: #FFC145;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.footer-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-nav-link {
+    color: #AAAAAA;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-nav-link:hover {
+    color: #FFFFFF;
+}
+
+/* Контакты */
+.footer-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+}
+
+.footer-contact-icon {
+    color: #FFC145;
+    width: 20px;
+    height: 20px;
+    margin-right: 0.75rem;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+.footer-contact-text {
+    color: #AAAAAA;
+    line-height: 1.5;
+}
+
+/* Копирайт */
+.footer-copyright {
+    border-top: 1px solid #444444;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    text-align: center;
+    color: #888888;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-logo-column {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 2rem 0;
+        position: relative;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-logo-column {
+        grid-column: span 1;
+    }
+    
+    .footer-heading {
+        margin-bottom: 1rem;
+    }
+}

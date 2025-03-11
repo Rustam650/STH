@@ -1,0 +1,217 @@
+.header {
+    background: #1a1a1a;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    height: 80px;
+}
+
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 15px;
+    height: 100%;
+}
+
+.header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.header__logo {
+    max-width: 120px;
+}
+
+.header__logo-img {
+    height: 30px;
+    filter: brightness(0) invert(1); /* Делаем логотип белым */
+}
+
+.header__menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.header__menu-item {
+    position: relative;
+}
+
+.header__menu-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Эффект подчеркивания при наведении */
+.header__menu-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #ff3c00; /* Оранжевый цвет как на djaffi.ru */
+    transition: width 0.3s ease;
+}
+
+.header__menu-link:hover {
+    color: #ff3c00;
+}
+
+.header__menu-link:hover::after {
+    width: 100%;
+}
+
+/* Активный пункт меню */
+.header__menu-link.active {
+    color: #ff3c00;
+}
+
+.header__menu-link.active::after {
+    width: 100%;
+}
+
+/* Мобильное меню */
+.header__burger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+}
+
+.header__burger span {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.header__burger span:nth-child(1) { top: 0; }
+.header__burger span:nth-child(2) { top: 9px; }
+.header__burger span:nth-child(3) { top: 18px; }
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .header__burger {
+        display: block;
+    }
+
+    .header__menu {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background: #1a1a1a;
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .header__menu.active {
+        display: flex;
+    }
+
+    /* Анимация бургер-меню */
+    .header__burger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .header__burger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .header__burger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+    }
+}
+
+/* Дополнительные стили для контента под шапкой */
+body {
+    padding-top: 80px;
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.main {
+    min-height: calc(100vh - 50px);
+}
+
+/* Дополнительные медиа-запросы для больших экранов */
+@media (min-width: 1200px) {
+    .container {
+        padding: 0 30px;
+    }
+}
+
+/* Основные стили навигации */
+.nav {
+    background-color: #FFC145;
+    height: 80px;
+    transition: all 0.3s ease;
+}
+
+/* Контейнер навигации */
+.nav-container {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Логотип */
+.nav-logo {
+    height: 50px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Навигационные ссылки */
+.nav-link {
+    position: relative;
+    color: #1D1D1D;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 16px;
+    transition: color 0.3s ease;
+}
+
+/* Эффект подчеркивания */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+/* Анимация при наведении */
+.nav-link:hover {
+    color: white;
+}
+
+.nav-link:hover::after {
+    width: 80%;
+} 

@@ -1,0 +1,111 @@
+/* Основной контейнер */
+.contacts-container {
+    max-width: 1200px;
+    padding: 2rem 1rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Заголовок страницы */
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FFC145;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    text-align: left;
+    align-self: flex-start;
+    width: 100%;
+    position: relative;
+    padding-left: 20px;
+}
+
+/* Сетка карточек контактов */
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    justify-content: center;
+}
+
+/* Карточка контакта */
+.contact-card {
+    background: #2D2D2D;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    width: 300px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.contact-card__title {
+    color: #FFC145;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #FFC145;
+    text-align: left;
+}
+
+.contact-card__content {
+    color: #fff;
+    font-size: 1rem;
+    line-height: 2;
+    flex-grow: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .contacts-grid {
+        grid-template-columns: repeat(3, 300px);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .contacts-grid {
+        grid-template-columns: repeat(2, 300px);
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+        padding-left: 10px;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .contacts-grid {
+        grid-template-columns: 300px;
+    }
+    
+    .page-title {
+        font-size: 1.75rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .contact-card__title {
+        font-size: 1.125rem;
+    }
+    
+    .contacts-container {
+        padding: 1rem;
+        margin-left: 10px;
+    }
+}

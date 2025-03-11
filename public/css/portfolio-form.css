@@ -1,0 +1,869 @@
+/* ============================================
+   ОСНОВНЫЕ ПЕРЕМЕННЫЕ
+   ============================================ */
+:root {
+    /* Основная цветовая палитра */
+    --primary-color: #FFC145;
+    --primary-light: #FFD175;
+    --primary-hover: #FFE2A9;
+    --dark-bg: #1D1D1D;
+    --dark-bg-light: #2D2D2D;
+    --gray-text: #AAAAAA;
+    --light-bg: #f8f9fa;
+    --danger-color: #FF6B6B;
+    --danger-light: #FF8787;
+    --text-dark: #212529;
+    --text-light: #FFFFFF;
+    --success-color: #28a745;
+    --success-light: #34ce57;
+    
+    /* Размеры, отступы и скругления */
+    --spacer-xs: 0.5rem;
+    --spacer-sm: 1rem;
+    --spacer-md: 1.5rem;
+    --spacer-lg: 2rem;
+    --spacer-xl: 2.5rem;
+    --border-radius-sm: 0.25rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 0.75rem;
+    
+    /* Тени */
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   ОСНОВНОЙ КОНТЕЙНЕР
+   ============================================ */
+/* Центрирующий контейнер с максимальной шириной для всей формы */
+.portfolio-form-wrapper {
+    max-width: 1200px;
+    margin: var(--spacer-xl) auto;
+    padding: var(--spacer-lg) var(--spacer-sm);
+}
+
+/* ============================================
+   ЗАГОЛОВОК СТРАНИЦЫ
+   ============================================ */
+/* Контейнер для заголовка страницы с отступами */
+.form-header {
+    margin-bottom: var(--spacer-xl);
+    text-align: center;
+}
+
+/* Стилизация основного заголовка страницы */
+.form-header h1 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacer-xs);
+    letter-spacing: -0.01em;
+}
+
+/* Подзаголовок с описанием формы */
+.form-header p {
+    color: var(--gray-text);
+    font-size: 1.2rem;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   ОСНОВНАЯ ФОРМА
+   ============================================ */
+/* Основной контейнер формы с тёмным фоном и тенями */
+.portfolio-form {
+    background-color: var(--dark-bg-light);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacer-xl);
+    box-shadow: var(--shadow-md);
+}
+
+/* Стилизация всех полей ввода внутри формы */
+.portfolio-form .form-control {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-md);
+    padding: 1rem 1.25rem;
+    color: var(--text-light); /* Белый цвет текста для всех полей */
+    transition: all 0.2s ease-in-out;
+    font-size: 1rem;
+    height: auto;
+}
+
+/* Стили при фокусе на поле ввода */
+.portfolio-form .form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 69, 0.2);
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Стилизация всех текстовых меток полей ввода */
+.portfolio-form .form-label {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: var(--spacer-xs);
+    letter-spacing: 0.03em;
+}
+
+/* Для группы полей ввода с кнопкой */
+.portfolio-form .input-group .form-control {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Кнопка для добавления URL изображения */
+.portfolio-form .image-url-add,
+.btn-primary {
+    background-color: var(--success-color);
+    border: 1px solid var(--success-color);
+    color: var(--text-light);
+    padding: 0.75rem 1.25rem;
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Эффект при наведении на кнопку добавления URL */
+.portfolio-form .image-url-add:hover,
+.btn-primary:hover {
+    background-color: var(--success-light);
+    border-color: var(--success-light);
+    transform: translateY(-1px);
+}
+
+/* Кнопка сохранения формы */
+.portfolio-form .btn-save {
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--dark-bg);
+    padding: var(--spacer-sm) var(--spacer-lg);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* Эффект при наведении на кнопку сохранения */
+.portfolio-form .btn-save:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Кнопка отмены */
+.portfolio-form .btn-cancel {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: calc(var(--spacer-sm) - 2px) calc(var(--spacer-lg) - 2px);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Эффект при наведении на кнопку отмены */
+.portfolio-form .btn-cancel:hover {
+    background-color: rgba(255, 193, 69, 0.1);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   СЕКЦИИ ФОРМЫ
+   ============================================ */
+/* Основные блоки формы */
+.form-section {
+    margin-bottom: var(--spacer-xl);
+}
+
+/* Группа формы - поле ввода с меткой */
+.form-group {
+    margin-bottom: var(--spacer-lg);
+}
+
+/* Метка поля ввода */
+.form-label {
+    display: block;
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--spacer-xs);
+}
+
+/* Общие стили для полей ввода */
+.form-control {
+    width: 100%;
+    padding: var(--spacer-sm) var(--spacer-md);
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-md);
+    color: var(--text-light); /* Белый цвет текста для всех полей */
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+/* Стили фокуса для всех полей ввода */
+.form-control:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 193, 69, 0.15);
+}
+
+/* Стиль для плейсхолдера внутри полей */
+.form-control::placeholder {
+    color: #999999;
+    opacity: 0.6;
+}
+
+/* Специальные стили для текстовых областей */
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+/* Сообщения об ошибках валидации */
+.invalid-feedback {
+    display: none;
+    color: var(--danger-color);
+    font-size: 0.875rem;
+    margin-top: var(--spacer-xs);
+    font-weight: 500;
+}
+
+/* Когда ошибка показывается */
+.invalid-feedback.d-block {
+    display: block;
+}
+
+/* ============================================
+   СЕКЦИЯ ИЗОБРАЖЕНИЙ
+   ============================================ */
+/* Контейнер для блока добавления изображений */
+.images-section {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacer-lg);
+    margin-bottom: var(--spacer-xl);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Заголовок секции изображений */
+.images-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacer-md);
+}
+
+/* Основной заголовок секции */
+.images-section-title {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var (--spacer-xs);
+    letter-spacing: -0.01em;
+}
+
+/* Описание секции изображений */
+.images-section-desc {
+    color: var(--gray-text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Счётчик изображений в секции */
+.image-counter {
+    background: var(--primary-color);
+    padding: 0.35rem 0.75rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    color: var(--dark-bg);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* Контейнер для полей ввода URL изображений */
+.image-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-sm);
+    margin-bottom: var(--spacer-lg);
+}
+
+/* Группа элементов для одного поля ввода изображения */
+.image-input-group {
+    transition: all 0.3s ease;
+    padding: var(--spacer-xs);
+    border-radius: var(--border-radius-md);
+}
+
+/* Эффект при наведении на группу полей */
+.image-input-group:hover {
+    transform: translateX(5px);
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Группа элементов для совместного расположения */
+.input-group {
+    display: flex;
+    gap: var(--spacer-xs);
+}
+
+/* Кнопка удаления изображения */
+.btn-remove-image {
+    background-color: var(--danger-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: var(--border-radius-md);
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+/* Эффект при наведении на кнопку удаления */
+.btn-remove-image:hover {
+    background-color: var(--danger-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Кнопка добавления нового изображения */
+.btn-add-image {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: var(--primary-color);
+    border: 2px dashed var(--primary-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacer-md);
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacer-sm);
+    transition: all 0.2s ease;
+    font-weight: 600;
+}
+
+/* Эффект при наведении на кнопку добавления */
+.btn-add-image:hover {
+    background-color: rgba(255, 193, 69, 0.08);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   КНОПКИ ФОРМЫ
+   ============================================ */
+/* Контейнер для кнопок внизу формы */
+.form-buttons {
+    display: flex;
+    gap: var(--spacer-md);
+    justify-content: flex-end;
+    margin-top: var(--spacer-xl);
+}
+
+/* Контейнер для кнопок внизу формы - меняем выравнивание на пространство между элементами */
+.form-buttons,
+.d-flex.justify-content-between {
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center;
+    gap: var(--spacer-md);
+    margin-top: var(--spacer-xl);
+    width: 100%;
+}
+
+/* Выравнивание для центральной кнопки */
+.d-flex.justify-content-between > div {
+    margin: 0 auto; /* Центрирование блока с кнопкой */
+    display: flex;
+    justify-content: center;
+}
+
+/* Кнопка сохранения формы */
+.btn-save,
+.btn-primary {
+    background-color: var(--success-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: var(--border-radius-md);
+    padding: 0.85rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    transition: all 0.2s ease;
+    min-width: 200px;
+    letter-spacing: 0.02em;
+}
+
+/* Эффект при наведении на кнопку сохранения */
+.btn-save:hover,
+.btn-primary:hover {
+    background-color: var(--success-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Кнопка отмены */
+.btn-cancel {
+    background-color: var(--danger-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: var(--border-radius-md);
+    padding: 0.85rem 1.75rem;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    min-width: 200px;
+    font-weight: 500;
+}
+
+/* Эффект при наведении на кнопку отмены */
+.btn-cancel:hover {
+    background-color: var(--danger-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   АДАПТИВНАЯ ВЕРСТКА
+   ============================================ */
+/* Стили для планшетов и мобильных устройств */
+@media (max-width: 768px) {
+    /* Уменьшение заголовка на маленьких экранах */
+    .form-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    /* Уменьшение отступов в форме на маленьких экранах */
+    .portfolio-form {
+        padding: var(--spacer-md);
+    }
+    
+    /* Уменьшение отступов в секции изображений */
+    .images-section {
+        padding: var(--spacer-md);
+    }
+    
+    /* Изменение расположения заголовка секции изображений */
+    .images-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacer-sm);
+    }
+    
+    /* Кнопки формы в столбец на маленьких экранах */
+    .form-buttons {
+        flex-direction: column;
+        gap: var(--spacer-sm);
+    }
+    
+    /* Растяжение кнопок на всю ширину */
+    .btn-save, .btn-cancel {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Стили для очень маленьких экранов (мобильные телефоны) */
+@media (max-width: 576px) {
+    /* Еще меньший заголовок на мобильных */
+    .form-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    /* Группа полей ввода в столбец на маленьких экранах */
+    .input-group {
+        flex-direction: column;
+    }
+    
+    /* Кнопка удаления на всю ширину */
+    .btn-remove-image {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ============================================
+   ПРЕДПРОСМОТР ИЗОБРАЖЕНИЙ
+   ============================================ */
+/* Сетка для миниатюр загруженных изображений */
+.image-preview-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--spacer-md);
+    margin-top: var(--spacer-lg);
+    margin-bottom: var(--spacer-lg);
+    min-height: 50px;
+}
+
+/* Одна миниатюра изображения */
+.image-preview-item {
+    position: relative;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    aspect-ratio: 4/3;
+}
+
+/* Эффект при наведении на миниатюру */
+.image-preview-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-md);
+    z-index: 1;
+}
+
+/* Само изображение внутри миниатюры */
+.image-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Кнопка удаления изображения из превью */
+.image-preview-remove {
+    position: absolute;
+    top: var(--spacer-xs);
+    right: var(--spacer-xs);
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    z-index: 2;
+    opacity: 0;
+}
+
+/* Эффект при наведении на миниатюру - показываем кнопку удаления */
+.image-preview-item:hover .image-preview-remove {
+    opacity: 1;
+}
+
+/* Эффект при наведении на кнопку удаления */
+.image-preview-remove:hover {
+    background-color: rgba(255, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+/* Группа элементов для одного URL изображения с отступом */
+.image-input-group {
+    margin-bottom: var(--spacer-sm);
+}
+
+/* Кнопка для добавления URL изображения в форму */
+.image-url-add {
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+    border: none;
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+    padding: 0.85rem 1.25rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Эффект при наведении на кнопку добавления URL */
+.image-url-add:hover {
+    background-color: var(--primary-light);
+}
+
+/* Иконка внутри кнопки добавления URL */
+.image-url-add i {
+    font-size: 1rem;
+}
+
+/* ============================================
+   КОМПОНЕНТЫ ЗАГРУЗКИ ИЗОБРАЖЕНИЙ
+   ============================================ */
+/* Область для загрузки изображений перетаскиванием */
+.image-upload-dropzone {
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacer-xl) var(--spacer-md);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Стили при наведении и при перетаскивании файлов над зоной */
+.image-upload-dropzone:hover,
+.image-upload-dropzone.dragover {
+    border-color: var(--primary-color);
+    background-color: rgba(255, 193, 69, 0.05);
+    transform: translateY(-2px);
+}
+
+/* Контейнер предпросмотра с сеткой из 4 колонок */
+.image-preview-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacer-md);
+    margin-top: var(--spacer-lg);
+}
+
+/* Элемент предпросмотра изображения */
+.image-preview-item {
+    position: relative;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+/* Изображение внутри элемента предпросмотра */
+.image-preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+/* Эффект увеличения при наведении на изображение */
+.image-preview-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Контейнер для кнопок действий с превью */
+.image-preview-actions {
+    position: absolute;
+    top: var(--spacer-xs);
+    right: var(--spacer-xs);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Показ кнопок при наведении на элемент предпросмотра */
+.image-preview-item:hover .image-preview-actions {
+    opacity: 1;
+}
+
+/* Стили для бейджей (счетчики и т.п.) */
+.badge {
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+}
+
+/* Стили для бейджа с фирменным цветом */
+.bg-primary {
+    background-color: var(--primary-color) !important;
+    color: var(--dark-bg);
+}
+
+/* Усиление метки для полей формы */
+.form-label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+/* Центрирование контейнера на странице */
+.container.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Стили для отключенных элементов в dropzone */
+.image-upload-dropzone.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    border-color: #666;
+}
+
+/* Стили для текста ошибок валидации изображений */
+#image-error {
+    color: var(--danger-color);
+    font-size: 0.95rem;
+    margin-top: var(--spacer-sm);
+    padding: var(--spacer-sm);
+    border-radius: var(--border-radius-md);
+    background-color: rgba(255, 107, 107, 0.1);
+    border-left: 3px solid var(--danger-color);
+    font-weight: 500;
+}
+
+/* Стили для счетчика символов в текстовых полях */
+.form-text {
+    font-size: 0.875rem;
+    color: var(--gray-text);
+    margin-top: 0.3rem;
+    text-align: right;
+}
+
+/* Стили для счетчика символов при превышении лимита */
+.text-danger {
+    color: var(--danger-color) !important;
+    font-weight: 600;
+}
+
+/* Стили для карточки с тенью */
+.card.border-0.shadow-sm {
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: var(--dark-bg-light);
+}
+
+/* Стили для заголовка карточки */
+.card-header {
+    padding: var(--spacer-lg) var(--spacer-md);
+}
+
+/* Стили для тела карточки */
+.card-body {
+    padding: var(--spacer-lg);
+}
+
+/* Стили для контейнера загрузки изображений */
+.image-upload-container {
+    margin-bottom: var(--spacer-lg);
+}
+
+/* Стили для поля ввода URL изображения */
+.image-url-input {
+    margin-top: var(--spacer-md);
+}
+
+/* Стили для больших кнопок */
+.btn-lg {
+    padding: 0.85rem 1.75rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+/* Стили для рамки полей формы */
+.form-control-lg {
+    font-size: 1.1rem;
+    padding: 0.85rem 1.25rem;
+}
+
+/* Стили для алертов */
+.alert {
+    border-radius: var(--border-radius-md);
+    padding: var(--spacer-md);
+    margin-bottom: var(--spacer-lg);
+    border: none;
+}
+
+/* Стили для разделителя */
+hr {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: var(--spacer-lg) 0;
+}
+
+/* Дополнительные стили для кнопки "Вернуться к списку" */
+.btn-light {
+    background-color: transparent;
+    color: var(--text-light);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius-md);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-top: var(--spacer-md);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Дополнительные стили для кнопки "Вернуться к списку" */
+.btn-light,
+a.btn-light {
+    background-color: transparent;
+    color: var(--text-light);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius-md);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: auto; /* Прижимаем к левому краю */
+    margin-top: 0; /* Убираем верхний отступ, т.к. он задан на родителе */
+}
+
+/* Фиксированные цвета полей ввода */
+input[type="text"].form-control,
+input[type="number"].form-control,
+input[type="url"].form-control,
+input.form-control-lg,
+#image-url-input {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--text-light);
+}
+
+/* Изменение цвета плейсхолдера */
+input::placeholder,
+textarea::placeholder {
+    color: rgba(15, 225, 148, 0.5);
+}
+
+/* Стили для текстовой области описания */
+textarea.form-control {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--text-light);
+}
+
+/* Заголовок для секции изображений проекта */
+.fs-5 {
+    color: var(--text-light);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Иконка плюса внутри кнопки */
+.bi-plus-lg {
+    color: var(--text-light);
+}

@@ -1,0 +1,60 @@
+/* Контейнер для страницы */
+.contacts-container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Сетка карточек */
+.contact-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Карточка контакта */
+.contact-card {
+    background-color: #2D2D2D;
+    border-radius: 12px;
+    padding: 32px;
+    width: 300px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Заголовок карточки */
+.contact-card__title {
+    color: #FFC145;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+/* Информация в карточке */
+.contact-card__info {
+    color: #FFFFFF;
+    font-size: 1.125rem;
+    line-height: 1.5;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .contact-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-card {
+        width: 100%;
+        max-width: 300px;
+    }
+} 

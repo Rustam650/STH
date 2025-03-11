@@ -1,0 +1,159 @@
+/* Общие стили для админ-панели */
+.image-preview-container {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.image-preview-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ccc;
+}
+
+/* Улучшенные стили для заголовков страниц */
+.page-header {
+    margin-bottom: 1.5rem;
+}
+
+.page-header h1 {
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.page-header .subtitle {
+    margin-top: 0.25rem;
+    color: #6c757d;
+}
+
+/* Стили для карточек */
+.card-header-primary {
+    background: linear-gradient(60deg, #7b1fa2, #913f9e);
+    color: white;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+}
+
+.card-header-warning {
+    background: linear-gradient(60deg, #ffa726, #fb8c00);
+    color: white;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 152, 0, 0.4);
+}
+
+.card-header-success {
+    background: linear-gradient(60deg, #66bb6a, #43a047);
+    color: white;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(76, 175, 80, 0.4);
+}
+
+.card-header-danger {
+    background: linear-gradient(60deg, #ef5350, #e53935);
+    color: white;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(244, 67, 54, 0.4);
+}
+
+.card-header-info {
+    background: linear-gradient(60deg, #26c6da, #00acc1);
+    color: white;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4);
+}
+
+/* Стили для кнопок действий */
+.btn-action-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Улучшенные стили для форм */
+.form-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.form-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.form-section-title {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #495057;
+}
+
+/* Стили для сортируемых таблиц */
+.sortable-table tbody tr {
+    cursor: move;
+}
+
+.sortable-table tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+.sortable-table .sorting-handle {
+    cursor: grab;
+}
+
+.sortable-table .sorting-handle:active {
+    cursor: grabbing;
+}
+
+/* Индикатор загрузки */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: white;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #ffffff;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .card-header h5 {
+        font-size: 1rem;
+    }
+    
+    .btn-sm {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Стили для админ-панели */
+
+/* Контейнер с ограниченной шириной */
+.admin-container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+/* Остальные стили админ-панели */

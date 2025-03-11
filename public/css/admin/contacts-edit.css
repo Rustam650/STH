@@ -1,0 +1,321 @@
+/* Основной контейнер */
+.container-fluid {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Заголовок и кнопка добавления */
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.text-2xl {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #FFC145;
+}
+
+.add-contact-btn {
+    background: #FFC145;
+    color: #1D1D1D;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-contact-btn:hover {
+    background: #FFD175;
+    transform: translateY(-1px);
+}
+
+/* Форма добавления */
+.contacts-form-card {
+    background: #2D2D2D;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Группа формы */
+.contact-form-group {
+    background: #363636;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Группа инпутов */
+.input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* Поле ввода */
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-field label {
+    color: #FFC145;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.input-field input {
+    background: #2D2D2D;
+    border: 1px solid #4A4A4A;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    color: #FFFFFF;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.input-field input:focus {
+    border-color: #FFC145;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 193, 69, 0.2);
+}
+
+/* Кнопки действий */
+.form-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.save-button {
+    background: #FFC145;
+    color: #1D1D1D;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.save-button:hover {
+    background: #FFD175;
+    transform: translateY(-1px);
+}
+
+/* Список контактов */
+.contacts-list {
+    margin-top: 3rem;
+}
+
+.section-title {
+    color: #FFC145;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* Сетка карточек */
+.contact-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* Карточка контакта */
+.contact-card {
+    background: #2D2D2D;
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+}
+
+.contact-card__title {
+    color: #FFC145;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.contact-card__info {
+    color: #FFFFFF;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.contact-card__actions {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.edit-btn,
+.delete-btn {
+    background: none;
+    border: none;
+    color: #FFC145;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: all 0.2s ease;
+}
+
+.edit-btn:hover {
+    color: #FFD175;
+    transform: scale(1.1);
+}
+
+.delete-btn:hover {
+    color: #FF4444;
+    transform: scale(1.1);
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .contact-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 1rem;
+    }
+
+    .input-group {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .contacts-form-card {
+        padding: 1rem;
+    }
+
+    .contact-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .d-flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .add-contact-btn {
+        width: 100%;
+    }
+}
+
+/* Стили для страницы редактирования контактов */
+.contacts-form-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-top: 1.5rem;
+    max-width: 800px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.input-field {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 1rem;
+}
+
+.input-field label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+.input-field input:focus {
+    outline: none;
+    border-color: #28a745;
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.save-button {
+    background-color: #28a745;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+}
+
+.text-danger {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+@media (max-width: 768px) {
+    .input-group {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .input-field {
+        min-width: 100%;
+    }
+}

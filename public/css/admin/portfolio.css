@@ -1,0 +1,729 @@
+/* Таблица */
+.table {
+    --bs-table-hover-bg: rgba(0, 0, 0, 0.02);
+    border-collapse: separate;
+    border-spacing: 0 .8rem;
+    margin-top: -0.8rem;
+}
+
+.table td, 
+.table th {
+    background: #fff;
+    border: none;
+    border-left: 1px solid #e3e6f0;
+}
+
+.table td:first-child,
+.table th:first-child {
+    border-left: none;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.table td:last-child,
+.table th:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Строки таблицы */
+.table tr {
+    box-shadow: 0 2px 4px rgba(0,0,0,.02);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.table tbody tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,.05);
+}
+
+/* Заголовки */
+.table thead th {
+    background: #f8f9fc;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    color: #686868;
+    padding: 1rem;
+}
+
+/* Ячейки */
+.table td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* Изображения */
+.portfolio-images {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.portfolio-image {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portfolio-image:hover img {
+    transform: scale(1.5);
+    z-index: 2;
+}
+
+.portfolio-image .badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 0.7rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 0;
+    padding: 2px 4px;
+}
+
+/* Кнопки действий */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.action-buttons .btn {
+    min-width: 130px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    padding: 0 1rem;
+    border-radius: 6px;
+}
+
+/* Описание */
+.portfolio-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #212529;
+    margin-bottom: 3px;
+}
+
+.portfolio-description {
+    color: #6c757d;
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+/* Пустое состояние */
+.empty-state {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: #dee2e6;
+    margin-bottom: 1rem;
+}
+
+.empty-state p {
+    color: #6c757d;
+    font-size: 1.1rem;
+}
+
+/* Пагинация */
+.pagination {
+    margin: 2rem 0 0;
+    justify-content: center;
+}
+
+/* Алерты */
+.alert {
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.alert-success {
+    background-color: #f0fff4;
+    color: #2f855a;
+}
+
+.btn-close {
+    font-size: 0.875rem;
+}
+
+/* Добавим стили для кнопок */
+.btn-action.btn-primary {
+    background-color: #4299e1;
+    border-color: #4299e1;
+    color: white;
+}
+
+.btn-action.btn-primary:hover {
+    background-color: #3182ce;
+    border-color: #3182ce;
+    box-shadow: 0 4px 6px rgba(66, 153, 225, 0.2);
+}
+
+.btn-action.btn-danger {
+    background-color: #f56565;
+    border-color: #f56565;
+    color: white;
+}
+
+.btn-action.btn-danger:hover {
+    background-color: #e53e3e;
+    border-color: #e53e3e;
+    box-shadow: 0 4px 6px rgba(245, 101, 101, 0.2);
+}
+
+.btn-action.btn-warning {
+    background-color: #ecc94b;
+    border-color: #ecc94b;
+    color: #744210;
+    font-weight: 600;
+}
+
+.btn-action.btn-warning:hover {
+    background-color: #d69e2e;
+    border-color: #d69e2e;
+    box-shadow: 0 4px 6px rgba(236, 201, 75, 0.2);
+}
+
+/* Стили для иконок в кнопках */
+.btn-action.btn-warning i {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+}
+
+/* Основной контейнер */
+.container-fluid {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Заголовок и кнопка */
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/* Стили заголовка */
+.text-2xl {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.text-gray-900 {
+    color: #111827;
+}
+
+/* Стили кнопки добавления */
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.bg-\[\#FFC145\] {
+    background-color: #FFC145;
+}
+
+.text-\[\#1D1D1D\] {
+    color: #1D1D1D;
+}
+
+.rounded {
+    border-radius: 0.375rem;
+}
+
+.hover\:bg-\[\#FFD175\]:hover {
+    background-color: #FFD175;
+}
+
+.transition-colors {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* Кнопка "Добавить работу" */
+.add-portfolio-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
+
+.btn-add-portfolio {
+    background-color: #fbbf24;
+    color: #1a1a1a;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(251, 191, 36, 0.1);
+    margin-left: right;
+}
+
+.btn-add-portfolio span {
+    position: relative;
+    top: 1px;
+}
+
+.btn-add-portfolio:hover {
+    background-color: #f59e0b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(251, 191, 36, 0.2);
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+.btn-add-portfolio:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(251, 191, 36, 0.1);
+}
+
+/* Контейнер формы */
+.portfolio-form-wrapper {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Заголовок формы */
+.form-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.form-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.form-header p {
+    font-size: 1rem;
+    color: #64748b;
+}
+
+/* Форма */
+.portfolio-form {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+}
+
+.form-section {
+    margin-bottom: 2.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+    display: block;
+    font-size: 0.95rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    transition: all 0.2s;
+    font-size: 1rem;
+    background-color: #f8fafc;
+}
+
+.form-control:focus {
+    background-color: #fff;
+    border-color: #eab308;
+    box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.15);
+}
+
+.form-control::placeholder {
+    color: #94a3b8;
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Секция изображений */
+.images-section {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.images-section-header {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.images-section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.images-section-desc {
+    color: #64748b;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.image-counter {
+    background: #eab308;
+    color: #1a1a1a;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.image-input-group {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s;
+}
+
+.image-input-group:hover {
+    border-color: #eab308;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.image-input-group .input-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-remove-image {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.btn-remove-image:hover {
+    background-color: #dc2626;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
+}
+
+.btn-add-image {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.875rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+    margin-top: 1rem;
+}
+
+.btn-add-image:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+}
+
+/* Кнопки формы */
+.form-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e2e8f0;
+}
+
+.btn-save {
+    background-color: #22c55e;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    min-width: 200px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: all 0.2s;
+}
+
+.btn-save:hover {
+    background-color: #16a34a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(34, 197, 94, 0.2);
+}
+
+.btn-cancel {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    min-width: 160px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+    background-color: #dc2626;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
+}
+
+/* Стили для сообщений об ошибках */
+.invalid-feedback {
+    color: #e53e3e;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.is-invalid {
+    border-color: #e53e3e !important;
+}
+
+.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15) !important;
+}
+
+/* Анимации */
+.btn {
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .portfolio-image {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-form {
+        padding: 1.5rem;
+    }
+
+    .images-section {
+        padding: 1.5rem;
+    }
+
+    .images-section-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .btn-save, .btn-cancel {
+        width: 100%;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .action-buttons .btn {
+        width: 100%;
+    }
+
+    .d-flex {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .px-4.py-2.bg-\[\#FFC145\] {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .btn-action {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .portfolio-description {
+        display: none;
+    }
+}
+
+/* Стили для страницы списка работ портфолио */
+table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Дополнение к существующим стилям */
+
+/* Центрирование и максимальная ширина контейнера */
+.container {
+    max-width: 1024px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Стили для заголовка */
+.h3 {
+    font-weight: 700;
+    color: #212529;
+}
+
+/* Центрирование заголовка */
+.text-center {
+    text-align: center !important;
+}
+
+/* Выравнивание по центру */
+.align-items-center {
+    align-items: center !important;
+}
+
+.justify-content-center {
+    justify-content: center !important;
+}
+
+/* Гибкий контейнер для центрирования */
+.d-flex {
+    display: flex !important;
+}
+
+.flex-column {
+    flex-direction: column !important;
+}
+
+/* Отступы для заголовка */
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+/* Улучшение стилей карточки */
+.card {
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05) !important;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 1.5rem 1rem;
+}
+
+.card-title {
+    color: #212529;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Кнопки */
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.btn-light {
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+    color: #212529;
+}
+
+.btn-light:hover {
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .container {
+        max-width: 100% !important;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}

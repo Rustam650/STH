@@ -1,0 +1,123 @@
+/* Общие стили */
+.sortable-sections .list-group-item {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.sortable-sections .list-group-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.sortable-sections .drag-handle {
+    cursor: move;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.sortable-sections .drag-handle:hover {
+    opacity: 1;
+}
+
+/* Стили для изображения предпросмотра */
+.section-preview-image img {
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Форма */
+.bg-source {
+    transition: opacity 0.3s ease;
+}
+
+.image-preview {
+    min-height: 100px;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #ced4da;
+    color: #6c757d;
+    text-align: center;
+}
+
+.image-preview img {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 150px;
+}
+
+.custom-file-label::after {
+    content: "Обзор";
+    background-color: #e9ecef;
+    border-color: inherit;
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+/* Кнопки действий */
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.actions .btn {
+    border-radius: 0.3rem;
+    transition: all 0.2s ease;
+}
+
+.actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .section-preview-image {
+        display: none;
+    }
+    
+    .list-group-item {
+        flex-wrap: wrap;
+    }
+    
+    .actions {
+        width: 100%;
+        margin-top: 1rem;
+        text-align: right;
+        justify-content: flex-end;
+    }
+}
+
+/* Пустое состояние */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+}
+
+.empty-state i {
+    opacity: 0.5;
+}
+
+/* Модальное окно */
+.modal-content {
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-footer {
+    border-top: 1px solid #dee2e6;
+}

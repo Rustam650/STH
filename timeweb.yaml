@@ -1,0 +1,12 @@
+name: my-app
+env: [node, php, python] # Укажите нужное окружение
+version: "1.0"
+instance:
+  region: ru-1
+  cpu: 1
+  memory: 1024
+  disk: 10
+build:
+  command: npm install && npm run build # Команда для сборки
+run:
+  command: npm start # Команда для запуска 

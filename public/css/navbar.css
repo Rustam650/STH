@@ -1,0 +1,260 @@
+/* Навигационная панель */
+.navbar {
+    background-color: rgba(255, 193, 69, 0.95);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.05);
+}
+
+.navbar-logo img {
+    height: 45px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.navbar-logo-text {
+    color: #1D1D1D;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+/* Навигационные ссылки */
+.navbar-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar-link {
+    color: #2d2d2d;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.navbar-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    transition: width 0.3s ease;
+}
+
+.navbar-link:hover::after, 
+.navbar-link.active::after {
+    width: 100%;
+}
+
+.navbar-link:hover, 
+.navbar-link.active {
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Бургер-меню */
+.navbar-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 101;
+    transition: transform 0.3s ease;
+}
+
+.navbar-burger:hover {
+    transform: scale(1.1);
+}
+
+.navbar-burger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #2d2d2d;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Мобильное меню */
+.navbar-mobile {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: #1D1D1D;
+    padding: 5rem 2rem 2rem;
+    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 100;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    border-left: 2px solid #FFC145;
+}
+
+.navbar-mobile.active {
+    right: 0;
+}
+
+.navbar-mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.navbar-mobile-link {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.navbar-mobile-link::before {
+    content: '';
+    position: absolute;
+    left: -100%;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #FFC145;
+    transition: left 0.3s ease;
+}
+
+.navbar-mobile-link:hover::before,
+.navbar-mobile-link.active::before {
+    left: 0;
+}
+
+.navbar-mobile-link:hover,
+.navbar-mobile-link.active {
+    color: #FFC145;
+    transform: translateX(10px);
+}
+
+/* Overlay для мобильного меню */
+.navbar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.navbar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Анимация бургер-меню */
+.navbar-burger.active span:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+    background-color: #FFC145;
+}
+
+.navbar-burger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-burger.active span:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+    background-color: #FFC145;
+}
+
+/* Эффект скролла для навбара */
+.navbar.scrolled {
+    background-color: rgba(29, 29, 29, 0.95);
+    padding: 0.8rem 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.navbar.scrolled .navbar-link {
+    color: #e0e0e0;
+}
+
+.navbar.scrolled .navbar-link:hover, 
+.navbar.scrolled .navbar-link.active {
+    color: #FFC145;
+}
+
+.navbar.scrolled .navbar-link::after {
+    background-color: #FFC145;
+}
+
+.navbar.scrolled .navbar-burger span {
+    background-color: #e0e0e0;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .navbar-links {
+        display: none;
+    }
+    
+    .navbar-burger {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.8rem 1rem;
+    }
+    
+    .navbar-logo img {
+        height: 38px;
+    }
+    
+    .navbar-mobile {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Блокировка прокрутки при открытом мобильном меню */
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+    padding-right: 15px; /* Компенсация скроллбара */
+} 

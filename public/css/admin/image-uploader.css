@@ -1,0 +1,126 @@
+/* Стили для загрузки и предпросмотра изображений */
+.image-uploader {
+    margin-bottom: 1.5rem;
+}
+
+.image-uploader-tabs {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.image-uploader-tab {
+    padding: 0.5rem 0.75rem;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin-right: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.image-uploader-tab:hover {
+    background-color: #e9ecef;
+}
+
+.image-uploader-tab.active {
+    background-color: #FFC145;
+    border-color: #FFC145;
+    color: #fff;
+}
+
+.image-uploader-content {
+    border: 1px solid #dee2e6;
+    padding: 1rem;
+    border-radius: 0 4px 4px 4px;
+}
+
+.image-preview-container {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.image-preview-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ccc;
+}
+
+.image-preview-placeholder i {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.image-preview {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 0.25rem;
+}
+
+.current-image {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+}
+
+.current-image img {
+    max-height: 150px;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+/* Кнопки загрузки */
+.upload-btn-group {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.upload-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #dee2e6;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.upload-btn:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.upload-btn:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.upload-btn.active {
+    background-color: #FFC145;
+    border-color: #FFC145;
+    color: #fff;
+}
+
+/* Настройки для мобильных устройств */
+@media (max-width: 768px) {
+    .image-uploader-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .image-uploader-tab {
+        flex-grow: 1;
+        text-align: center;
+    }
+    
+    .image-preview-container {
+        min-height: 150px;
+    }
+    
+    .image-preview {
+        max-height: 150px;
+    }
+}

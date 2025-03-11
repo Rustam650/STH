@@ -1,0 +1,775 @@
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+    font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    height: 100%;
+}
+
+/* Современные стили для главной страницы */
+.hero {
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.8)), url('../images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Стили для главной страницы в современном стиле */
+.home-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+.page-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: #000;
+    transition: all 0.5s ease-out;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.section:last-child {
+    margin-bottom: 0;
+}
+
+.section.active {
+    z-index: 2;
+}
+
+.section-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.05);
+    transition: transform 1.8s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    filter: brightness(0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.section.active .background-image {
+    transform: scale(1);
+    filter: brightness(0.8);
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.7;
+    transition: opacity 1s ease;
+    z-index: 1;
+}
+
+.section.active .gradient-overlay {
+    opacity: 0.75;
+}
+
+.section-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+}
+
+.section.active .section-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    width: 100%;
+    padding: 50px 30px;
+    margin: 0;
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.7em;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.2s;
+    text-align: center;
+    width: 100%;
+}
+
+.section.active .section-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-description {
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2em;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.4s;
+    max-width: 700px;
+    text-align: left;
+}
+
+.section.active .section-description {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.6s;
+}
+
+.section.active .buttons {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn {
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    background: #FFD700;
+    color: #000;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(255, 215, 0, 0.3);
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: #fff;
+    box-shadow: none;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Стилизация индикаторов для навигации */
+.section-indicators {
+    position: fixed;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.indicator::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background-color: #FFD700;
+    transform: scale(1.2);
+}
+
+.indicator.active::after {
+    opacity: 1;
+}
+
+/* Анимации для элементов */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Стилизация стрелки вниз для первой секции */
+.scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.scroll-hint:hover {
+    opacity: 1;
+}
+
+.section:last-child .scroll-hint {
+    display: none;
+}
+
+.mouse {
+    width: 26px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.wheel {
+    width: 4px;
+    height: 8px;
+    background: #FFD700;
+    position: absolute;
+    top: 8px;
+    border-radius: 2px;
+    animation: scroll 1.5s infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+}
+
+/* Обёртка для стрелки для гарантированного позиционирования */
+.scroll-arrow-wrapper {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-15px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-8px) translateX(-50%);
+    }
+}
+
+.arrow-down {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    border-radius: 50%;
+    padding: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.arrow-down:hover {
+    background-color: #000;
+    transform: scale(1.1) translateY(-5px);
+}
+
+.arrow-down svg {
+    width: 100%;
+    height: 100%;
+    fill: rgba(255, 215, 0, 0.9);
+}
+
+/* Стили для плавного скроллинга */
+.smooth-scroll {
+    height: 100vh;
+    overflow: hidden;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+
+/* Адаптивные отступы для стрелки на разных устройствах */
+@media (max-height: 700px) {
+    .scroll-hint {
+        bottom: 20px;
+    }
+    
+    .content-wrapper {
+        padding: 30px 25px;
+    }
+}
+
+@media (max-height: 500px) {
+    .scroll-hint {
+        bottom: 15px;
+    }
+    
+    .content-wrapper {
+        padding: 25px 20px;
+    }
+}
+
+/* Адаптивность для разных экранов */
+@media (max-width: 1200px) {
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-description {
+        font-size: 1.1rem;
+    }
+    
+    .content-wrapper {
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.2rem;
+        text-align: center;
+        align-self: center;
+    }
+    
+    .section-description {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .buttons {
+        justify-content: center;
+        align-self: center;
+    }
+    
+    .content-wrapper {
+        padding: 30px 20px;
+        align-items: center;
+    }
+    
+    .section {
+        height: 100vh;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .section-indicators {
+        right: 15px;
+    }
+
+    .last-section {
+        margin-bottom: 0;
+        padding-bottom: 2rem;
+    }
+
+    .feature-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .feature-card {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-description {
+        font-size: 0.95rem;
+    }
+    
+    .content-wrapper {
+        padding: 25px 15px;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+/* Parallax эффект */
+.parallax-section {
+    background-attachment: fixed;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Индикатор прокрутки */
+.scroll-indicator {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.scroll-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    margin: 12px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.scroll-dot::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.scroll-dot.active {
+    background: #FFD700;
+    transform: scale(1.2);
+}
+
+.scroll-dot.active::before {
+    opacity: 1;
+}
+
+/* Анимации для контента */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Интерактивные элементы */
+.interactive-button {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 14px 28px;
+    border-radius: 50px;
+    color: white;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.interactive-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Эффект градиентной подсветки */
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0.7;
+    transition: opacity 0.5s ease;
+}
+
+.section:hover .gradient-overlay {
+    opacity: 0.85;
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-height: 800px) {
+    .section {
+        height: 100vh;
+    }
+    
+    .content-wrapper {
+        padding: 30px 25px;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 0.5em;
+    }
+    
+    .section-description {
+        font-size: 1.05rem;
+        margin-bottom: 1.5em;
+    }
+}
+
+/* Добавляем CSS переменную для высоты шапки */
+:root {
+    --navbar-height: 80px;
+    --footer-height: 60px;
+}
+
+/* Стили для hero-section */
+.hero-section {
+    position: relative;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Анимация для фона */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animated-gradient {
+    background: linear-gradient(-45deg, #FFD700, #FFC107, #FFB300, #FFD700);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+/* Стили для карточек */
+.feature-cards {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 3rem;
+    width: 100%;
+}
+
+.feature-card {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    flex: 1;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.feature-icon {
+    color: #FFC145;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(255, 193, 69, 0.1);
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #FFC145;
+    text-align: center;
+}
+
+.feature-description {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Стили для последней секции */
+.last-section {
+    margin-bottom: 0;
+    scroll-snap-align: start;
+}
+
+/* Отключаем snap-scrolling при видимости футера */
+.page-content.footer-visible {
+    scroll-snap-type: none;
+}
