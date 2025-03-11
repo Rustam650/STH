@@ -19,15 +19,15 @@ build:
   command: |
     composer install --no-dev --optimize-autoloader
     cp .env.production .env
-    php artisan key:generate
-    php artisan config:cache
-    php artisan route:cache
-    php artisan view:cache
+    php artisan key:generate --force
     php artisan storage:link
     npm install
     npm run build
+    php artisan config:cache
+    php artisan route:cache
+    php artisan view:cache
 run:
-  command: php artisan serve --host=0.0.0.0 --port=$PORT
+  command: php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
 environment:
   APP_ENV: production
   APP_DEBUG: false
@@ -37,4 +37,6 @@ environment:
   DB_DATABASE: cr06550_stonehil
   DB_USERNAME: admin123
   DB_PASSWORD: XcXD\^d<U=4aAi
-  FORCE_HTTPS: true 
+  FORCE_HTTPS: true
+  APP_URL: https://stone-hill.ru
+  ASSET_URL: https://stone-hill.ru 
