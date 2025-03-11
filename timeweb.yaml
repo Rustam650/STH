@@ -1,123 +1,75 @@
 name: sth-app
 env: php
 version: "1.0"
+
 domains:
   - stone-hill.ru
   - www.stone-hill.ru
+
 ssl:
   enabled: true
   type: lets_encrypt
   domains:
     - stone-hill.ru
     - www.stone-hill.ru
-redirects:
-  - source: www.stone-hill.ru
-    target: stone-hill.ru
-    type: permanent
-    ssl: true
+  redirect:
+    enabled: true
+    from: www.stone-hill.ru
+    to: stone-hill.ru
+
 instance:
   region: ru-1
   cpu: 1
   memory: 1024
   disk: 10
+
 build:
-  command: |
-    composer install --no-dev --optimize-autoloader
-    cp .env.production .env
-    
-    # Создание и настройка директорий
-    mkdir -p /var/www/html
-    cp -r . /var/www/html/
-    cd /var/www/html
-    
-    # Создание необходимых директорий
-    mkdir -p storage/framework/{sessions,views,cache}
-    mkdir -p storage/logs
-    mkdir -p bootstrap/cache
-    
-    # Установка правильных прав
-    chown -R www-data:www-data /var/www/html
-    chmod -R 755 /var/www/html
-    chmod -R 777 storage
-    chmod -R 777 bootstrap/cache
-    chmod -R 777 public
-    
-    # Генерация ключа приложения
-    php artisan key:generate --force
-    php artisan storage:link || true
-    
-    # Очистка кэша
-    php artisan config:clear
-    php artisan route:clear
-    php artisan view:clear
-    php artisan cache:clear
-    
-    # Проверка подключения к БД
-    echo "Проверка подключения к базе данных..."
-    php artisan db:monitor || true
-    
-    # Проверка статуса миграций
-    echo "Статус миграций:"
-    php artisan migrate:status || true
-    
-    # Очистка и пересоздание базы данных
-    echo "Сброс базы данных..."
-    php artisan db:wipe --force || true
-    
-    # Установка и сборка фронтенда
-    npm ci
-    npm run build
-    
-    # Кэширование конфигурации
-    php artisan config:cache
-    php artisan route:cache
-    php artisan view:cache
-    
-    # Запуск миграций с сидами
-    echo "Запуск миграций..."
-    php artisan migrate --force --seed
+  - composer install --no-dev --optimize-autoloader
+  - mkdir -p storage/framework/{sessions,views,cache}
+  - mkdir -p storage/logs
+  - chmod -R 775 storage bootstrap/cache
+  - chown -R www-data:www-data storage bootstrap/cache
+  - php artisan key:generate --force
+  - php artisan config:cache
+  - php artisan route:cache
+  - php artisan view:cache
+  - php artisan migrate --force
+
 run:
-  command: |
-    # Проверка статуса приложения при запуске
-    echo "Проверка статуса приложения..."
-    php artisan about
-    
-    # Проверка статуса БД при запуске
-    echo "Проверка статуса базы данных..."
-    php artisan db:monitor || true
-    php artisan migrate:status || true
-    
-    # Создание сокета для PHP-FPM
-    mkdir -p /var/run
-    touch /var/run/php-fpm.sock
-    chmod 777 /var/run/php-fpm.sock
-    
-    # Запуск сервисов
-    php-fpm -D
-    nginx -g "daemon off;"
+  - php artisan about
+  - php artisan db:monitor
+  - mkdir -p /var/run && touch /var/run/php-fpm.sock
+  - chown -R www-data:www-data /var/run/php-fpm.sock
+  - chmod 660 /var/run/php-fpm.sock
+  - service php8.2-fpm start
+  - service nginx start
+
 nginx:
+  root: /var/www/html/public
   locations:
-    - pattern: /
-      root: /var/www/html/public
-      index: index.php
+    /:
       try_files: $uri $uri/ /index.php?$query_string
-    - pattern: ~ \.php$
-      root: /var/www/html/public
+    ~ \.php$:
       fastcgi_pass: unix:/var/run/php-fpm.sock
       fastcgi_index: index.php
-      fastcgi_param: SCRIPT_FILENAME $document_root$fastcgi_script_name
       include: fastcgi_params
-environment:
+      fastcgi_param:
+        SCRIPT_FILENAME: $document_root$fastcgi_script_name
+        PATH_INFO: $fastcgi_path_info
+
+env:
   APP_ENV: production
-  APP_DEBUG: true
-  DB_CONNECTION: mysql
-  DB_HOST: 82.97.253.200
-  DB_PORT: 3306
-  DB_DATABASE: cr06550_stonehil
-  DB_USERNAME: admin123
-  DB_PASSWORD: XcXD\^d<U=4aAi
-  FORCE_HTTPS: true
+  APP_DEBUG: false
   APP_URL: https://stone-hill.ru
-  ASSET_URL: https://stone-hill.ru
   LOG_CHANNEL: stack
-  LOG_LEVEL: debug 
+  LOG_LEVEL: warning
+  DB_CONNECTION: mysql
+  DB_HOST: localhost
+  DB_PORT: 3306
+  DB_DATABASE: u2435678_sth
+  DB_USERNAME: u2435678_sth
+  DB_PASSWORD: ${DB_PASSWORD}
+  CACHE_DRIVER: file
+  SESSION_DRIVER: file
+  SESSION_LIFETIME: 120
+  QUEUE_CONNECTION: sync 
