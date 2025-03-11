@@ -26,6 +26,19 @@ build:
     chmod -R 777 public
     php artisan key:generate --force
     php artisan storage:link || true
+    
+    # Проверка подключения к БД
+    echo "Проверка подключения к базе данных..."
+    php artisan db:monitor || true
+    
+    # Проверка статуса миграций
+    echo "Статус миграций:"
+    php artisan migrate:status || true
+    
+    # Очистка и пересоздание базы данных
+    echo "Сброс базы данных..."
+    php artisan db:wipe --force || true
+    
     npm ci
     npm run build
     php artisan config:clear
@@ -35,9 +48,15 @@ build:
     php artisan config:cache
     php artisan route:cache
     php artisan view:cache
-    php artisan migrate --force
+    
+    # Запуск миграций с сидами
+    echo "Запуск миграций..."
+    php artisan migrate --force --seed
 run:
   command: |
+    # Проверка статуса БД при запуске
+    php artisan db:monitor || true
+    php artisan migrate:status || true
     php-fpm -D
     nginx -g "daemon off;"
 nginx:
