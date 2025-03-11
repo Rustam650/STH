@@ -22,6 +22,7 @@ build:
     php artisan key:generate --force
     php artisan storage:link || true
     chmod -R 775 storage bootstrap/cache
+    chmod -R 775 public
     npm ci
     npm run build
     php artisan config:clear
@@ -33,7 +34,21 @@ build:
     php artisan view:cache
     php artisan migrate --force
 run:
-  command: apache2-foreground
+  command: |
+    php-fpm -D
+    nginx -g "daemon off;"
+nginx:
+  locations:
+    - pattern: /
+      root: /app/public
+      index: index.php
+      try_files: $uri $uri/ /index.php?$query_string
+    - pattern: ~ \.php$
+      root: /app/public
+      fastcgi_pass: 127.0.0.1:9000
+      fastcgi_index: index.php
+      fastcgi_param: SCRIPT_FILENAME $document_root$fastcgi_script_name
+      include: fastcgi_params
 environment:
   APP_ENV: production
   APP_DEBUG: false
