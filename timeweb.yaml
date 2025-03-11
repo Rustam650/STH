@@ -25,9 +25,19 @@ build:
     composer install --no-dev --optimize-autoloader
     cp .env.production .env
     
+    # Создание и настройка директорий
+    mkdir -p /var/www/html
+    cp -r . /var/www/html/
+    cd /var/www/html
+    
     # Создание необходимых директорий
     mkdir -p storage/framework/{sessions,views,cache}
     mkdir -p storage/logs
+    mkdir -p bootstrap/cache
+    
+    # Установка правильных прав
+    chown -R www-data:www-data /var/www/html
+    chmod -R 755 /var/www/html
     chmod -R 777 storage
     chmod -R 777 bootstrap/cache
     chmod -R 777 public
@@ -77,18 +87,23 @@ run:
     php artisan db:monitor || true
     php artisan migrate:status || true
     
+    # Создание сокета для PHP-FPM
+    mkdir -p /var/run
+    touch /var/run/php-fpm.sock
+    chmod 777 /var/run/php-fpm.sock
+    
     # Запуск сервисов
     php-fpm -D
     nginx -g "daemon off;"
 nginx:
   locations:
     - pattern: /
-      root: /app/public
+      root: /var/www/html/public
       index: index.php
       try_files: $uri $uri/ /index.php?$query_string
     - pattern: ~ \.php$
-      root: /app/public
-      fastcgi_pass: 127.0.0.1:9000
+      root: /var/www/html/public
+      fastcgi_pass: unix:/var/run/php-fpm.sock
       fastcgi_index: index.php
       fastcgi_param: SCRIPT_FILENAME $document_root$fastcgi_script_name
       include: fastcgi_params
