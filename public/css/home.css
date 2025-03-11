@@ -56,26 +56,18 @@ body {
 }
 
 .page-content {
+    min-height: 100vh;
     position: relative;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+    overflow: hidden;
 }
 
 .section {
+    min-height: 100vh;
     position: relative;
-    height: 100vh;
-    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
-    background-color: #000;
-    transition: all 0.5s ease-out;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
 }
 
 .section:last-child {
@@ -93,19 +85,12 @@ body {
     width: 100%;
     height: 100%;
     z-index: 1;
-    overflow: hidden;
 }
 
 .background-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.05);
-    transition: transform 1.8s cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    filter: brightness(0.8);
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
 .section.active .background-image {
@@ -119,10 +104,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #000;
-    opacity: 0.7;
-    transition: opacity 1s ease;
-    z-index: 1;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
+    z-index: 2;
 }
 
 .section.active .gradient-overlay {
@@ -131,16 +114,12 @@ body {
 
 .section-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
-    padding: 0 20px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: #fff;
 }
 
 .section.active .section-content {
@@ -149,160 +128,83 @@ body {
 }
 
 .content-wrapper {
-    max-width: 1200px;
-    width: 100%;
-    padding: 50px 30px;
-    margin: 0;
-    position: relative;
-    z-index: 3;
+    max-width: 800px;
+    margin: 0 auto;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .section-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.7em;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.2s;
-    text-align: center;
-    width: 100%;
-}
-
-.section.active .section-title {
-    opacity: 1;
-    transform: translateY(0);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
 }
 
 .section-description {
-    font-size: 1.15rem;
-    font-weight: 400;
+    font-size: 1.25rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 2em;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.4s;
-    max-width: 700px;
-    text-align: left;
-}
-
-.section.active .section-description {
-    opacity: 1;
-    transform: translateY(0);
+    margin-bottom: 2rem;
+    opacity: 0.9;
 }
 
 .buttons {
     display: flex;
-    gap: 20px;
+    gap: 1rem;
     justify-content: center;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.6s;
-}
-
-.section.active .buttons {
-    opacity: 1;
-    transform: translateY(0);
+    margin-bottom: 3rem;
 }
 
 .btn {
-    font-size: 0.95rem;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    padding: 14px 28px;
-    border-radius: 50px;
-    transition: all 0.3s ease;
+    border-radius: 8px;
     text-decoration: none;
-    background: #FFD700;
-    color: #000;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    transition: width 0.3s ease;
-    z-index: -1;
+    transition: all 0.3s ease;
+    background-color: #FFC145;
+    color: #1D1D1D;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 7px 20px rgba(255, 215, 0, 0.3);
-}
-
-.btn:hover::before {
-    width: 100%;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 193, 69, 0.4);
 }
 
 .btn-outline {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    color: #fff;
-    box-shadow: none;
+    background-color: transparent;
+    border: 2px solid #FFC145;
+    color: #FFC145;
 }
 
 .btn-outline:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #fff;
-    transform: translateY(-3px);
-    box-shadow: 0 7px 20px rgba(255, 255, 255, 0.1);
+    background-color: #FFC145;
+    color: #1D1D1D;
 }
 
 /* Стилизация индикаторов для навигации */
 .section-indicators {
     position: fixed;
-    right: 25px;
+    right: 2rem;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 10;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    z-index: 100;
+    gap: 1rem;
 }
 
 .indicator {
-    width: 8px;
-    height: 8px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
-    position: relative;
-}
-
-.indicator::after {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    opacity: 0;
-    transition: all 0.3s ease;
 }
 
 .indicator.active {
-    background-color: #FFD700;
+    background-color: #FFC145;
     transform: scale(1.2);
-}
-
-.indicator.active::after {
-    opacity: 1;
 }
 
 /* Анимации для элементов */
@@ -448,100 +350,105 @@ body {
 
 /* Адаптивность для разных экранов */
 @media (max-width: 1200px) {
+    .section-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .section-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 992px) {
     .section-title {
         font-size: 2.5rem;
     }
-    
+
     .section-description {
         font-size: 1.1rem;
     }
-    
-    .content-wrapper {
-        max-width: 900px;
+
+    .feature-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 }
 
 @media (max-width: 768px) {
+    .section-content {
+        padding: 1.5rem 1rem;
+    }
+
     .section-title {
-        font-size: 2.2rem;
-        text-align: center;
-        align-self: center;
+        font-size: 2rem;
+        margin-bottom: 1rem;
     }
-    
+
     .section-description {
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
-    
+
     .buttons {
-        justify-content: center;
-        align-self: center;
-    }
-    
-    .content-wrapper {
-        padding: 30px 20px;
-        align-items: center;
-    }
-    
-    .section {
-        height: 100vh;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
     }
 
     .btn {
         width: 100%;
         text-align: center;
-        padding: 12px 20px;
-    }
-    
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero p {
-        font-size: 1.1rem;
-    }
-    
-    .section-indicators {
-        right: 15px;
-    }
-
-    .last-section {
-        margin-bottom: 0;
-        padding-bottom: 2rem;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
     }
 
     .feature-cards {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
     }
-    
+
     .feature-card {
-        width: 100%;
-        max-width: 100%;
+        padding: 1.5rem;
+    }
+
+    .feature-icon {
+        font-size: 2rem;
+    }
+
+    .feature-title {
+        font-size: 1.1rem;
+    }
+
+    .feature-description {
+        font-size: 0.95rem;
+    }
+
+    .section-indicators {
+        right: 1rem;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
     }
 }
 
 @media (max-width: 480px) {
-    .section-title {
-        font-size: 1.8rem;
+    .section-content {
+        padding: 1rem;
     }
-    
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
     .section-description {
         font-size: 0.95rem;
     }
-    
-    .content-wrapper {
-        padding: 25px 15px;
-    }
-    
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-    
-    .hero p {
-        font-size: 1rem;
+
+    .feature-card {
+        padding: 1.25rem;
     }
 }
 
@@ -597,8 +504,8 @@ body {
 /* Анимации для контента */
 .fade-up {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .fade-up.visible {
@@ -627,17 +534,6 @@ body {
 }
 
 /* Эффект градиентной подсветки */
-.gradient-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #000;
-    opacity: 0.7;
-    transition: opacity 0.5s ease;
-}
-
 .section:hover .gradient-overlay {
     opacity: 0.85;
 }
@@ -711,41 +607,29 @@ body {
 
 /* Стили для карточек */
 .feature-cards {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
     margin-top: 3rem;
-    width: 100%;
 }
 
 .feature-card {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 1.5rem;
-    border-radius: 10px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    flex: 1;
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: rgba(29, 29, 29, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    transition: transform 0.3s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
-    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .feature-icon {
+    font-size: 2.5rem;
     color: #FFC145;
-    font-size: 2rem;
     margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: rgba(255, 193, 69, 0.1);
 }
 
 .feature-title {
@@ -753,14 +637,12 @@ body {
     font-weight: 600;
     margin-bottom: 0.75rem;
     color: #FFC145;
-    text-align: center;
 }
 
 .feature-description {
-    font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
     line-height: 1.5;
-    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /* Стили для последней секции */

@@ -166,7 +166,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     display: none;
     justify-content: center;
     align-items: center;
@@ -198,15 +198,19 @@ html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 }
 
 .modal-header {
-    padding: 1.25rem;
+    padding: 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #1D1D1D;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .modal-title {
@@ -248,22 +252,24 @@ html, body {
 
 .modal-body {
     flex: 1;
-    overflow-y: auto;
-    padding: 1.25rem;
+    padding: 1.5rem;
 }
 
 .modal-image {
     width: 100%;
     height: auto;
+    max-height: 400px;
+    object-fit: contain;
     border-radius: 8px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .modal-description {
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 1.6;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
 }
 
 .modal-category {
@@ -405,9 +411,9 @@ html, body {
 .modal-info-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
 }
 
 /* Стили для индикатора загрузки */
@@ -485,14 +491,19 @@ html, body {
     }
 
     .modal-description {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        padding: 0 0.5rem;
+        margin-bottom: 1.5rem;
     }
 
-    .modal-image,
-    .modal-slider {
-        max-height: 250px;
-        height: 250px;
-        margin-bottom: 0.75rem;
+    .modal-info-row {
+        padding: 0 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .modal-image {
+        max-height: 300px;
+        margin-bottom: 1.5rem;
     }
 
     .modal-nav {
@@ -530,6 +541,29 @@ html, body {
     .portfolio-card {
         width: 100%;
         height: 250px;
+    }
+
+    .modal-header {
+        padding: 0.75rem;
+    }
+
+    .modal-body {
+        padding: 0.75rem;
+    }
+
+    .modal-description {
+        font-size: 0.95rem;
+        padding: 0;
+    }
+
+    .modal-info-row {
+        padding: 0;
+        gap: 0.75rem;
+    }
+
+    .modal-image {
+        max-height: 250px;
+        margin-bottom: 1rem;
     }
 }
 
