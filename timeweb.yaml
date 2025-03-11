@@ -19,10 +19,13 @@ build:
   command: |
     composer install --no-dev --optimize-autoloader
     cp .env.production .env
+    mkdir -p storage/framework/{sessions,views,cache}
+    mkdir -p storage/logs
+    chmod -R 777 storage
+    chmod -R 777 bootstrap/cache
+    chmod -R 777 public
     php artisan key:generate --force
     php artisan storage:link || true
-    chmod -R 775 storage bootstrap/cache
-    chmod -R 775 public
     npm ci
     npm run build
     php artisan config:clear
@@ -51,7 +54,7 @@ nginx:
       include: fastcgi_params
 environment:
   APP_ENV: production
-  APP_DEBUG: false
+  APP_DEBUG: true
   DB_CONNECTION: mysql
   DB_HOST: 82.97.253.200
   DB_PORT: 3306
