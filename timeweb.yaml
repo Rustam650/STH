@@ -19,13 +19,23 @@ build:
   command: |
     composer install --no-dev --optimize-autoloader
     cp .env.production .env
+    
+    # Создание необходимых директорий
     mkdir -p storage/framework/{sessions,views,cache}
     mkdir -p storage/logs
     chmod -R 777 storage
     chmod -R 777 bootstrap/cache
     chmod -R 777 public
+    
+    # Генерация ключа приложения
     php artisan key:generate --force
     php artisan storage:link || true
+    
+    # Очистка кэша
+    php artisan config:clear
+    php artisan route:clear
+    php artisan view:clear
+    php artisan cache:clear
     
     # Проверка подключения к БД
     echo "Проверка подключения к базе данных..."
@@ -39,12 +49,11 @@ build:
     echo "Сброс базы данных..."
     php artisan db:wipe --force || true
     
+    # Установка и сборка фронтенда
     npm ci
     npm run build
-    php artisan config:clear
-    php artisan route:clear
-    php artisan view:clear
-    php artisan cache:clear
+    
+    # Кэширование конфигурации
     php artisan config:cache
     php artisan route:cache
     php artisan view:cache
@@ -54,9 +63,16 @@ build:
     php artisan migrate --force --seed
 run:
   command: |
+    # Проверка статуса приложения при запуске
+    echo "Проверка статуса приложения..."
+    php artisan about
+    
     # Проверка статуса БД при запуске
+    echo "Проверка статуса базы данных..."
     php artisan db:monitor || true
     php artisan migrate:status || true
+    
+    # Запуск сервисов
     php-fpm -D
     nginx -g "daemon off;"
 nginx:
@@ -83,4 +99,5 @@ environment:
   FORCE_HTTPS: true
   APP_URL: https://stone-hill.ru
   ASSET_URL: https://stone-hill.ru
-  APACHE_DOCUMENT_ROOT: /app/public 
+  LOG_CHANNEL: stack
+  LOG_LEVEL: debug 
